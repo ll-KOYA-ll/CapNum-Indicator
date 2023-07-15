@@ -1,4 +1,4 @@
-# CapNum-Checker
+# CapNumChecker
 
 ## **Reason:**
 Personal Project
