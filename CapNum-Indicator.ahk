@@ -10,8 +10,57 @@
 */
 
 
+#Persistent
+
+CoordMode, ToolTip
+
+; get the screen width and height
+SysGet, width, 78
+SysGet, height, 79
+
+; get the states for both num and caps lock 0 for off, 1 for on
+capslockState := GetKeyState("CapsLock", "T")
+numlockState := GetKeyState("NumLock", "T")
+
 ; create two hotkeys for both capslock and numlock
 CapsLock::
+{
+	; determine which tooltip to show
+	if (capslockState = 0) ; off
+	{
+		capslockState = 1
+		ToolTip, CapsLock is off, width - 100, height - 60, 1
+		SetTimer, RemoveToolTip, -1000
+		return
+	}
+	else
+	{
+		capslockState = 0
+		ToolTip, CapsLock is on, width - 100, height - 60, 1
+		SetTimer, RemoveToolTip, -1000
+		return
+	}
+}
 
 NumLock::
+{
+	; determine which tooltip to show
+	if (numlockState = 0) ; off
+	{
+		numlockState = 1
+		ToolTip, NumLock is off, width - 100, height - 110, 2
+		SetTimer, RemoveToolTip, -1000
+		return
+	}
+	else
+	{
+		numlockState = 0
+		ToolTip, NumLock is on, width - 100, height - 110, 2
+		SetTimer, RemoveToolTip, -1000
+		return
+	}
+}
 
+RemoveToolTip:
+ToolTip
+return
