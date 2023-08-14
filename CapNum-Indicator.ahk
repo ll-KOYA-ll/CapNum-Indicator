@@ -10,7 +10,6 @@
 */
 
 
-#Persistent
 
 ; set coords to screen
 CoordMode, ToolTip
@@ -32,15 +31,13 @@ CapsLock::
 		capslockState = 1
 		setCapsLockState 1
 		ToolTip, CapsLock is on, width - 100, height - 60, 1
-		SetTimer, RemoveToolTip, -1000
 		return
 	}
 	else
 	{
 		capslockState = 0
 		setCapsLockState 0
-		ToolTip, CapsLock is off, width - 100, height - 60, 1
-		SetTimer, RemoveToolTip, -1000
+		ToolTip, , width - 100, height - 60, 1
 		return
 	}
 }
@@ -53,19 +50,13 @@ NumLock::
 		numlockState = 1
 		setNumLockState 1
 		ToolTip, NumLock is on, width - 100, height - 110, 2
-		SetTimer, RemoveToolTip, -1000
 		return
 	}
 	else
 	{
 		numlockState = 0
 		setNumLockState 0
-		ToolTip, NumLock is off, width - 100, height - 110, 2
-		SetTimer, RemoveToolTip, -1000
+		ToolTip, , width - 100, height - 110, 2
 		return
 	}
 }
-
-RemoveToolTip:
-ToolTip
-return
