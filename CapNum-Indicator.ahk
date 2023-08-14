@@ -12,6 +12,7 @@
 
 #Persistent
 
+; set coords to screen
 CoordMode, ToolTip
 
 ; get the screen width and height
@@ -26,17 +27,19 @@ numlockState := GetKeyState("NumLock", "T")
 CapsLock::
 {
 	; determine which tooltip to show
-	if (capslockState = 0) ; off
+	if (capslockState = 0) ; on
 	{
 		capslockState = 1
-		ToolTip, CapsLock is off, width - 100, height - 60, 1
+		setCapsLockState 1
+		ToolTip, CapsLock is on, width - 100, height - 60, 1
 		SetTimer, RemoveToolTip, -1000
 		return
 	}
 	else
 	{
 		capslockState = 0
-		ToolTip, CapsLock is on, width - 100, height - 60, 1
+		setCapsLockState 0
+		ToolTip, CapsLock is off, width - 100, height - 60, 1
 		SetTimer, RemoveToolTip, -1000
 		return
 	}
@@ -45,17 +48,19 @@ CapsLock::
 NumLock::
 {
 	; determine which tooltip to show
-	if (numlockState = 0) ; off
+	if (numlockState = 0) ; on
 	{
 		numlockState = 1
-		ToolTip, NumLock is off, width - 100, height - 110, 2
+		setNumLockState 1
+		ToolTip, NumLock is on, width - 100, height - 110, 2
 		SetTimer, RemoveToolTip, -1000
 		return
 	}
 	else
 	{
 		numlockState = 0
-		ToolTip, NumLock is on, width - 100, height - 110, 2
+		setNumLockState 0
+		ToolTip, NumLock is off, width - 100, height - 110, 2
 		SetTimer, RemoveToolTip, -1000
 		return
 	}
