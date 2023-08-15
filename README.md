@@ -1,6 +1,6 @@
 # CapNum-Indicator
 
-## **Reason:**
+## **Category:**
 Personal Project
 
 ## **Description:** 
